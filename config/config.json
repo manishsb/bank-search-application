@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "Manish_S_B",
+    "password": null,
+    "database": "bank_data_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "ftqgiycvlffybj",
+    "password": "d23b2eb71b3e4b8f32c532c7ed59537db8b3d827a217d11ef9af1c4a7082b595",
+    "database": "ddhhqs4nsmb63j",
+    "host": "ec2-54-228-207-163.eu-west-1.compute.amazonaws.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
