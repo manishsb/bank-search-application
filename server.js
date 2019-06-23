@@ -1,6 +1,8 @@
 const express = require('express');
+const bookHandlers = require('./handlers/bank.handler');
 
 const app = express();
 
-app.get('/ping', (req, res) => res.send('Pong'));
+app.get('/ifsc/:ifsc', bookHandlers.findByIFSC);
+app.get('/bank/:bank/:city', bookHandlers.findByBankAndCity);
 app.listen(process.env.PORT || 3030);
