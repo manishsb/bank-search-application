@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const bankBranch = sequelize.define('bank_branch', {
-    id: DataTypes.INTEGER,
     ifsc: DataTypes.STRING,
     bank_id: DataTypes.INTEGER,
     branch: DataTypes.STRING,
