@@ -15,17 +15,19 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  bankBranch.findByIfsc = ifsc => bankBranch.findOne({
+  bankBranch.findByIfsc = (ifsc, query) => bankBranch.findOne({
     where: {
       ifsc,
     },
+    ...query,
   });
 
-  bankBranch.findAllByBankAndCity = (bankName, city) => bankBranch.findAll({
+  bankBranch.findAllByBankAndCity = (bankName, city, query) => bankBranch.findAll({
     where: {
       bank_name: bankName,
       city,
     },
+    ...query,
   });
 
   return bankBranch;
