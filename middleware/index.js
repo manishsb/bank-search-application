@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const checkToken = (req, res, next) => {
   const token = req.headers['x-access-token'];
   if (token) {
-    jwt.verify(token, 'secret_token', (err, decoded) => {
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) {
         res.send({
           statusCode: 401,
