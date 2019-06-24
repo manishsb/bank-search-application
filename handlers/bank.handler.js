@@ -12,7 +12,7 @@ const getLimitAndOffset = ({ limit, offset }) => {
 const getBankProperties = ({ ifsc, bank, city }) => {
   const queryObject = {};
   if (ifsc) { queryObject.ifsc = ifsc; }
-  if (bank) { queryObject.bank = bank; }
+  if (bank) { queryObject.bank_name = bank; }
   if (city) { queryObject.city = city; }
   return queryObject;
 };
