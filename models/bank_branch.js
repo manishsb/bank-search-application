@@ -15,19 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  bankBranch.findByIfsc = (ifsc, query) => bankBranch.findOne({
+  bankBranch.searchBanks = (columnValues, limitAndOffset) => bankBranch.findAll({
     where: {
-      ifsc,
+      ...columnValues,
     },
-    ...query,
-  });
-
-  bankBranch.findAllByBankAndCity = (bankName, city, query) => bankBranch.findAll({
-    where: {
-      bank_name: bankName,
-      city,
-    },
-    ...query,
+    ...limitAndOffset,
   });
 
   return bankBranch;

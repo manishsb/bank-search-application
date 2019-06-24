@@ -4,30 +4,25 @@ const getLimitAndOffset = ({ limit, offset }) => {
   const limitVal = parseInt(limit, 10);
   const offsetVal = parseInt(offset, 10);
   const queryObject = {};
-  if (limitVal) {
-    queryObject.limit = limitVal;
-  }
-  if (offsetVal) {
-    queryObject.offset = offsetVal;
-  }
+  if (limitVal) { queryObject.limit = limitVal; }
+  if (offsetVal) { queryObject.offset = offsetVal; }
   return queryObject;
 };
 
-const findByIFSC = (req, res) => {
-  const { ifsc } = req.params;
-  Model.bank_branch.findByIfsc(
-    ifsc, getLimitAndOffset(req.query),
-  ).then((entry) => {
-    res.send(entry);
-  });
+const getBankProperties = ({ ifsc, bank, city }) => {
+  const queryObject = {};
+  if (ifsc) { queryObject.ifsc = ifsc; }
+  if (bank) { queryObject.bank = bank; }
+  if (city) { queryObject.city = city; }
+  return queryObject;
 };
 
-const findByBankAndCity = (req, res) => {
-  const { bank, city } = req.params;
-  Model.bank_branch.findAllByBankAndCity(
-    bank, city, getLimitAndOffset(req.query),
-  ).then((entries) => {
-    res.send(entries);
+const searchBanks = (req, res) => {
+  Model.bank_branch.searchBanks(
+    getBankProperties(req.query),
+    getLimitAndOffset(req.query),
+  ).then((result) => {
+    res.send(result);
   });
 };
 
@@ -36,7 +31,6 @@ const defaultRoute = (req, res) => {
 };
 
 module.exports = {
-  findByIFSC,
-  findByBankAndCity,
   defaultRoute,
+  searchBanks,
 };
